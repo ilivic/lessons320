@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KOTIKI320ModelContainer" CdmEntityContainer="KOTIKI320Entities">
+    <EntitySetMapping Name="Studs">
+      <EntityTypeMapping TypeName="KOTIKI320Model.Studs">
+        <MappingFragment StoreEntitySet="Studs">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Colors" ColumnName="Colors" />
+          <ScalarProperty Name="Groop" ColumnName="Groop" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id_Stud" ColumnName="id_Stud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
