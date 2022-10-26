@@ -53,13 +53,14 @@
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <ComboBox x:Name="CmdDays" SelectionChanged="CmdDays_Selected_1">
+            <ComboBox  x:Name="CmdDays" SelectionChanged="CmdDays_Selected_1">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding DayTitle}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <ProgressBar Opacity="0" Width="350" Height="50" Margin="10" x:Name="ProgressB" Foreground="Red" />
         </StackPanel>
     </Grid>
 </Window>
