@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище TRModelContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="DatePars">
+      <EntityTypeMapping TypeName="TRModel.DatePars">
+        <MappingFragment StoreEntitySet="DatePars">
+          <ScalarProperty Name="id_datePar" ColumnName="id_datePar" />
+          <ScalarProperty Name="DayTitle" ColumnName="DayTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pars">
+      <EntityTypeMapping TypeName="TRModel.Pars">
+        <MappingFragment StoreEntitySet="Pars">
+          <ScalarProperty Name="id_par" ColumnName="id_par" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudPars">
+      <EntityTypeMapping TypeName="TRModel.StudPars">
+        <MappingFragment StoreEntitySet="StudPars">
+          <ScalarProperty Name="id_Check" ColumnName="id_Check" />
+          <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+          <ScalarProperty Name="par_id" ColumnName="par_id" />
+          <ScalarProperty Name="datePar_id" ColumnName="datePar_id" />
+          <ScalarProperty Name="ChecStat" ColumnName="ChecStat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stud">
+      <EntityTypeMapping TypeName="TRModel.stud">
+        <MappingFragment StoreEntitySet="stud">
+          <ScalarProperty Name="ColorSt" ColumnName="ColorSt" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id_Stud" ColumnName="id_Stud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

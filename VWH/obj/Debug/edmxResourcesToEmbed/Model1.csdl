@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DatePars">
+    <Key>
+      <PropertyRef Name="id_datePar" />
+    </Key>
+    <Property Name="id_datePar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DayTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="StudPars" Relationship="Self.FK_StudPars_DatePars" FromRole="DatePars" ToRole="StudPars" />
+  </EntityType>
+  <EntityType Name="Pars">
+    <Key>
+      <PropertyRef Name="id_par" />
+    </Key>
+    <Property Name="id_par" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="StudPars" Relationship="Self.FK_StudPars_Pars" FromRole="Pars" ToRole="StudPars" />
+  </EntityType>
+  <EntityType Name="StudPars">
+    <Key>
+      <PropertyRef Name="id_Check" />
+    </Key>
+    <Property Name="id_Check" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stud_id" Type="Int32" Nullable="false" />
+    <Property Name="par_id" Type="Int32" Nullable="false" />
+    <Property Name="datePar_id" Type="Int32" Nullable="false" />
+    <Property Name="ChecStat" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DatePars" Relationship="Self.FK_StudPars_DatePars" FromRole="StudPars" ToRole="DatePars" />
+    <NavigationProperty Name="Pars" Relationship="Self.FK_StudPars_Pars" FromRole="StudPars" ToRole="Pars" />
+    <NavigationProperty Name="stud" Relationship="TRModel.FK_StudPars_stud" FromRole="StudPars" ToRole="stud" />
+  </EntityType>
+  <Association Name="FK_StudPars_DatePars">
+    <End Role="DatePars" Type="Self.DatePars" Multiplicity="1" />
+    <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DatePars">
+        <PropertyRef Name="id_datePar" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="datePar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudPars_Pars">
+    <End Role="Pars" Type="Self.Pars" Multiplicity="1" />
+    <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pars">
+        <PropertyRef Name="id_par" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="par_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DatePars" EntityType="Self.DatePars" />
+    <EntitySet Name="Pars" EntityType="Self.Pars" />
+    <EntitySet Name="StudPars" EntityType="Self.StudPars" />
+    <AssociationSet Name="FK_StudPars_DatePars" Association="Self.FK_StudPars_DatePars">
+      <End Role="DatePars" EntitySet="DatePars" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudPars_Pars" Association="Self.FK_StudPars_Pars">
+      <End Role="Pars" EntitySet="Pars" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+    <EntitySet Name="stud" EntityType="TRModel.stud" />
+    <AssociationSet Name="FK_StudPars_stud" Association="TRModel.FK_StudPars_stud">
+      <End Role="stud" EntitySet="stud" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="stud">
+    <Key>
+      <PropertyRef Name="id_Stud" />
+    </Key>
+    <Property Name="id_Stud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ColorSt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StudPars" Relationship="TRModel.FK_StudPars_stud" FromRole="stud" ToRole="StudPars" />
+  </EntityType>
+  <Association Name="FK_StudPars_stud">
+    <End Type="TRModel.stud" Role="stud" Multiplicity="1" />
+    <End Type="TRModel.StudPars" Role="StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud">
+        <PropertyRef Name="id_Stud" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="Stud_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

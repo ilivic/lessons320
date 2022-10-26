@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DatePars">
+          <Key>
+            <PropertyRef Name="id_datePar" />
+          </Key>
+          <Property Name="id_datePar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DayTitle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pars">
+          <Key>
+            <PropertyRef Name="id_par" />
+          </Key>
+          <Property Name="id_par" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stud">
+          <Key>
+            <PropertyRef Name="id_Stud" />
+          </Key>
+          <Property Name="id_Stud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="ColorSt" Type="text" />
+        </EntityType>
+        <EntityType Name="StudPars">
+          <Key>
+            <PropertyRef Name="id_Check" />
+          </Key>
+          <Property Name="id_Check" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Stud_id" Type="int" Nullable="false" />
+          <Property Name="par_id" Type="int" Nullable="false" />
+          <Property Name="datePar_id" Type="int" Nullable="false" />
+          <Property Name="ChecStat" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_StudPars_DatePars">
+          <End Role="DatePars" Type="Self.DatePars" Multiplicity="1" />
+          <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatePars">
+              <PropertyRef Name="id_datePar" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="datePar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudPars_Pars">
+          <End Role="Pars" Type="Self.Pars" Multiplicity="1" />
+          <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pars">
+              <PropertyRef Name="id_par" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudPars_stud">
+          <End Role="stud" Type="Self.stud" Multiplicity="1" />
+          <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stud">
+              <PropertyRef Name="id_Stud" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="Stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TRModelContainer">
+          <EntitySet Name="DatePars" EntityType="Self.DatePars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pars" EntityType="Self.Pars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudPars" EntityType="Self.StudPars" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StudPars_DatePars" Association="Self.FK_StudPars_DatePars">
+            <End Role="DatePars" EntitySet="DatePars" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudPars_Pars" Association="Self.FK_StudPars_Pars">
+            <End Role="Pars" EntitySet="Pars" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudPars_stud" Association="Self.FK_StudPars_stud">
+            <End Role="stud" EntitySet="stud" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DatePars">
+          <Key>
+            <PropertyRef Name="id_datePar" />
+          </Key>
+          <Property Name="id_datePar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudPars" Relationship="Self.FK_StudPars_DatePars" FromRole="DatePars" ToRole="StudPars" />
+        </EntityType>
+        <EntityType Name="Pars">
+          <Key>
+            <PropertyRef Name="id_par" />
+          </Key>
+          <Property Name="id_par" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudPars" Relationship="Self.FK_StudPars_Pars" FromRole="Pars" ToRole="StudPars" />
+        </EntityType>
+        <EntityType Name="StudPars">
+          <Key>
+            <PropertyRef Name="id_Check" />
+          </Key>
+          <Property Name="id_Check" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stud_id" Type="Int32" Nullable="false" />
+          <Property Name="par_id" Type="Int32" Nullable="false" />
+          <Property Name="datePar_id" Type="Int32" Nullable="false" />
+          <Property Name="ChecStat" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DatePars" Relationship="Self.FK_StudPars_DatePars" FromRole="StudPars" ToRole="DatePars" />
+          <NavigationProperty Name="Pars" Relationship="Self.FK_StudPars_Pars" FromRole="StudPars" ToRole="Pars" />
+          <NavigationProperty Name="stud" Relationship="TRModel.FK_StudPars_stud" FromRole="StudPars" ToRole="stud" />
+        </EntityType>
+        <Association Name="FK_StudPars_DatePars">
+          <End Role="DatePars" Type="Self.DatePars" Multiplicity="1" />
+          <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatePars">
+              <PropertyRef Name="id_datePar" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="datePar_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudPars_Pars">
+          <End Role="Pars" Type="Self.Pars" Multiplicity="1" />
+          <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pars">
+              <PropertyRef Name="id_par" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="par_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DatePars" EntityType="Self.DatePars" />
+          <EntitySet Name="Pars" EntityType="Self.Pars" />
+          <EntitySet Name="StudPars" EntityType="Self.StudPars" />
+          <AssociationSet Name="FK_StudPars_DatePars" Association="Self.FK_StudPars_DatePars">
+            <End Role="DatePars" EntitySet="DatePars" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudPars_Pars" Association="Self.FK_StudPars_Pars">
+            <End Role="Pars" EntitySet="Pars" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+          <EntitySet Name="stud" EntityType="TRModel.stud" />
+          <AssociationSet Name="FK_StudPars_stud" Association="TRModel.FK_StudPars_stud">
+            <End Role="stud" EntitySet="stud" />
+            <End Role="StudPars" EntitySet="StudPars" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="stud">
+          <Key>
+            <PropertyRef Name="id_Stud" />
+          </Key>
+          <Property Name="id_Stud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColorSt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StudPars" Relationship="TRModel.FK_StudPars_stud" FromRole="stud" ToRole="StudPars" />
+        </EntityType>
+        <Association Name="FK_StudPars_stud">
+          <End Type="TRModel.stud" Role="stud" Multiplicity="1" />
+          <End Type="TRModel.StudPars" Role="StudPars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stud">
+              <PropertyRef Name="id_Stud" />
+            </Principal>
+            <Dependent Role="StudPars">
+              <PropertyRef Name="Stud_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TRModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="DatePars">
+            <EntityTypeMapping TypeName="TRModel.DatePars">
+              <MappingFragment StoreEntitySet="DatePars">
+                <ScalarProperty Name="id_datePar" ColumnName="id_datePar" />
+                <ScalarProperty Name="DayTitle" ColumnName="DayTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pars">
+            <EntityTypeMapping TypeName="TRModel.Pars">
+              <MappingFragment StoreEntitySet="Pars">
+                <ScalarProperty Name="id_par" ColumnName="id_par" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudPars">
+            <EntityTypeMapping TypeName="TRModel.StudPars">
+              <MappingFragment StoreEntitySet="StudPars">
+                <ScalarProperty Name="id_Check" ColumnName="id_Check" />
+                <ScalarProperty Name="Stud_id" ColumnName="Stud_id" />
+                <ScalarProperty Name="par_id" ColumnName="par_id" />
+                <ScalarProperty Name="datePar_id" ColumnName="datePar_id" />
+                <ScalarProperty Name="ChecStat" ColumnName="ChecStat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stud">
+            <EntityTypeMapping TypeName="TRModel.stud">
+              <MappingFragment StoreEntitySet="stud">
+                <ScalarProperty Name="ColorSt" ColumnName="ColorSt" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_Stud" ColumnName="id_Stud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

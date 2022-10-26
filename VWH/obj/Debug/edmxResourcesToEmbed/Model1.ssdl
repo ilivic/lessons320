@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище TRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DatePars">
+    <Key>
+      <PropertyRef Name="id_datePar" />
+    </Key>
+    <Property Name="id_datePar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayTitle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pars">
+    <Key>
+      <PropertyRef Name="id_par" />
+    </Key>
+    <Property Name="id_par" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stud">
+    <Key>
+      <PropertyRef Name="id_Stud" />
+    </Key>
+    <Property Name="id_Stud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="ColorSt" Type="text" />
+  </EntityType>
+  <EntityType Name="StudPars">
+    <Key>
+      <PropertyRef Name="id_Check" />
+    </Key>
+    <Property Name="id_Check" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stud_id" Type="int" Nullable="false" />
+    <Property Name="par_id" Type="int" Nullable="false" />
+    <Property Name="datePar_id" Type="int" Nullable="false" />
+    <Property Name="ChecStat" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_StudPars_DatePars">
+    <End Role="DatePars" Type="Self.DatePars" Multiplicity="1" />
+    <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DatePars">
+        <PropertyRef Name="id_datePar" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="datePar_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudPars_Pars">
+    <End Role="Pars" Type="Self.Pars" Multiplicity="1" />
+    <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pars">
+        <PropertyRef Name="id_par" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="par_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudPars_stud">
+    <End Role="stud" Type="Self.stud" Multiplicity="1" />
+    <End Role="StudPars" Type="Self.StudPars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stud">
+        <PropertyRef Name="id_Stud" />
+      </Principal>
+      <Dependent Role="StudPars">
+        <PropertyRef Name="Stud_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище TRModelContainer">
+    <EntitySet Name="DatePars" EntityType="Self.DatePars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pars" EntityType="Self.Pars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stud" EntityType="Self.stud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudPars" EntityType="Self.StudPars" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_StudPars_DatePars" Association="Self.FK_StudPars_DatePars">
+      <End Role="DatePars" EntitySet="DatePars" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudPars_Pars" Association="Self.FK_StudPars_Pars">
+      <End Role="Pars" EntitySet="Pars" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudPars_stud" Association="Self.FK_StudPars_stud">
+      <End Role="stud" EntitySet="stud" />
+      <End Role="StudPars" EntitySet="StudPars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
