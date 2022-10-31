@@ -1,0 +1,17 @@
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\bin\Debug\AllStud.exe.config
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\bin\Debug\AllStud.exe
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\bin\Debug\AllStud.pdb
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.csprojAssemblyReference.cache
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\MainWindow.g.cs
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\App.g.cs
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud_MarkupCompile.cache
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud_MarkupCompile.lref
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\MainWindow.baml
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.g.resources
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.Properties.Resources.resources
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.csproj.GenerateResource.cache
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.csproj.CoreCompileInputs.cache
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.exe
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\AllStud.pdb
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\ConnectionWindow.g.cs
+C:\Users\ilivic911\Desktop\LocalDB\AllStud\AllStud\obj\Debug\ConnectionWindow.baml

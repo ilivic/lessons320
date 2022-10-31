@@ -1,0 +1,19 @@
+﻿<Window x:Class="AllStud.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AllStud"
+        mc:Ignorable="d"
+        Title="ConnectionWindow" Height="400" Width="400">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="100">
+            <TextBlock Text="Server State"/>
+            <TextBox x:Name="TxtPath" TextWrapping="Wrap" MaxWidth="250"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Exit" Margin="5" Click="Button_Click"/>
+                <Button Content="Go" Margin="5" Click="Button_Click_1"/>
+            </StackPanel>
+        </StackPanel> 
+    </Grid>
+</Window>
